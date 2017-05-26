@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        petervanderdoes git-flow-completion 0.6.0
+
+name                git-flow-avh-bash-completion
+categories          devel
+maintainers         {l2dy @l2dy} openmaintainer
+license             MIT
+
+description         Bash completion support for git-flow-avh.
+
+long_description    The contained bash completion routines provide \
+                    support for completing: \
+                    \n\t* git-flow init and version \
+                    \n\t* feature, hotfix and release branches \
+                    \n\t* remote feature, hotfix and release branch names
+
+platforms           darwin
+supported_archs     noarch
+
+checksums           rmd160  c77bd7d905a399df580b42be5cd1bb47a9749213 \
+                    sha256  54c989a067c6c536ad982ff45e21413ec1e67514197bbcdfa08bfcb335fdf94d
+
+depends_run         port:git-flow-avh \
+                    port:bash-completion
+
+use_configure       no
+
+build {}
+
+destroot {
+    xinstall -d -m 0755 ${destroot}${prefix}/etc/bash_completion.d
+    copy ${worksrcpath}/git-flow-completion.bash ${destroot}${prefix}/etc/bash_completion.d/git-flow
+}
