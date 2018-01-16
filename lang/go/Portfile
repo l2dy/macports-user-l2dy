@@ -1,0 +1,46 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                go
+epoch               2017
+version             1.99
+categories          lang
+platforms           darwin
+license             BSD
+maintainers         nomaintainer
+description         compiled, garbage-collected, concurrent programming \
+                    language developed by Google Inc.
+long_description    \
+    The Go programming language is an open source project to make programmers \
+    more productive. Go is expressive, concise, clean, and efficient. Its \
+    concurrency mechanisms make it easy to write programs that get the most \
+    out of multicore and networked machines, while its novel type system \
+    enables flexible and modular program construction. Go compiles quickly \
+    to machine code yet has the convenience of garbage collection and the \
+    power of run-time reflection. It's a fast, statically typed, compiled \
+    language that feels like a dynamically typed, interpreted language. Go \
+    is developed by Google Inc.
+
+homepage            https://golang.org/
+
+use_configure       no
+
+distfiles
+
+build {}
+
+destroot {
+    foreach f {go gofmt godoc} {
+        system -W ${destroot}${prefix}/bin/ "ln -s /usr/local/${name}/bin/$f ./$f"
+    }
+}
+
+if {${os.platform} eq "darwin" && ${os.major} < 12} {
+    pre-fetch {
+        ui_error "${name} ${version} requires Mac OS X 10.8 or greater."
+        return -code error "incompatible Mac OS X version"
+    }
+}
+
+livecheck.type      none
