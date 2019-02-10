@@ -1,0 +1,12 @@
+diff --git targets.mk targets.mk
+index 6393282..447f2d4 100644
+--- targets.mk
++++ targets.mk
+@@ -43,7 +43,6 @@ FMSGDUMP	= $(EXEODIR)$(DIRSEP)fmsgdump$(EXEFILE)
+ 
+ UTILS		= $(FIXSMB) $(CHKSMB) \
+ 			  $(SMBUTIL) $(BAJA) $(NODE) \
+-			  $(SBBSECHO) $(ECHOCFG) \
+ 			  $(ADDFILES) $(FILELIST) $(MAKEUSER) \
+ 			  $(ANS2ASC) $(ASC2ANS)  $(UNBAJA) \
+ 			  $(QWKNODES) $(SLOG) $(ALLUSERS) \
