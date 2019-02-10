@@ -1,0 +1,42 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        l2dy zssh 1.5d v
+categories          comms security
+license             GPL-2
+platforms           darwin
+maintainers         nomaintainer
+
+description         interactive file transfer wrapper for ssh
+long_description    zssh (Zmodem SSH) is a program for interactively \
+                    transferring files to a remote machine while using \
+                    SSH. It acts as an alternative to scp.
+
+homepage            http://zssh.sourceforge.net/
+
+checksums           rmd160  895d7693dd7dc740ca34c614a0850e2c2b2c4b59 \
+                    sha256  97f2e5c066516ed6ca6929b45bc225be7a3d7f514d604aab2a33c160ead4793d \
+                    size    43667
+
+depends_lib         port:readline
+depends_run         port:lrzsz
+
+use_autoreconf      yes
+
+configure.args      --mandir=${destroot}${prefix}/share/man
+
+destroot.destdir    prefix=${destroot}${prefix}
+
+post-destroot {
+    set docdir ${destroot}${prefix}/share/doc/${name}-${version}
+    xinstall -d ${docdir}
+    xinstall -m 644 -W ${worksrcpath} \
+        CHANGES \
+        COPYING \
+        FAQ \
+        README \
+        TODO \
+        ${docdir}
+}
