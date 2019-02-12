@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        l2dy zssh 1.5d v
+github.setup        l2dy zssh 1.6 v
 categories          comms security
 license             GPL-2
 platforms           darwin
@@ -16,9 +16,9 @@ long_description    zssh (Zmodem SSH) is a program for interactively \
 
 homepage            http://zssh.sourceforge.net/
 
-checksums           rmd160  895d7693dd7dc740ca34c614a0850e2c2b2c4b59 \
-                    sha256  97f2e5c066516ed6ca6929b45bc225be7a3d7f514d604aab2a33c160ead4793d \
-                    size    43667
+checksums           rmd160  342cb663551dae23b64491d655c56b5af23d987f \
+                    sha256  2a5b188908582bd6444c0e414e87bb8fc9f8cfb5971d3bc852997d56e3e9037a \
+                    size    42748
 
 depends_lib         port:readline
 depends_run         port:lrzsz
